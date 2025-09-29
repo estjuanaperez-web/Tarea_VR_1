@@ -3,27 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muñeco de nieve + modelo propio</title>
+  <title>Muñeco de nieve VR</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.7.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 </head>
 <body>
-  <a-scene>
+  <a-scene vr-mode-ui="enabled: true">
+    
     <!-- Assets -->
     <a-assets>
-      <a-asset-item id="snowman" src="https://estjuanaperez-web.github.io/Tarea_VR_1/muneco_de_nieve.glb"></a-asset-item>
+      <a-asset-item id="snowman-glb" src="https://estjuanaperez-web.github.io/Tarea_VR_1/muneco_de_nieve.glb"></a-asset-item>
     </a-assets>
 
     <!-- GLB Snowman -->
     <a-entity 
-      gltf-model="#snowman" 
+      gltf-model="#snowman-glb" 
       scale="1 1 1" 
-      position="0 0 -3" 
+      position="-1 0 -3" 
       rotation="0 45 0" 
-      animation-mixer>
+      animation-mixer
+      visible="true">
     </a-entity>
 
-    <!-- Custom A-Frame Model (example: simple snowman made with primitives) -->
+    <!-- Custom A-Frame Snowman -->
     <a-entity position="2 0 -3">
       <!-- Body -->
       <a-sphere position="0 0.5 0" radius="0.5" color="white"></a-sphere>
@@ -36,9 +38,17 @@
       <a-cone position="0 1.85 0.25" radius-bottom="0.05" radius-top="0" height="0.2" color="orange"></a-cone>
     </a-entity>
 
-    <!-- Floor + sky -->
+    <!-- Floor -->
     <a-plane position="0 0 -4" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+
+    <!-- Sky -->
     <a-sky color="#ECECEC"></a-sky>
+
+    <!-- Camera + controls -->
+    <a-entity position="0 1.6 0">
+      <a-camera wasd-controls look-controls></a-camera>
+    </a-entity>
+
   </a-scene>
 </body>
 </html>
